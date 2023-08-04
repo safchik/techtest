@@ -7,7 +7,7 @@ We also want to see consistent, concise commits to your repo.
 
 ## The Scenario and Task
 
-The scenario is that you are working on a university on a management system that can view the attendance and grades of various students.
+The scenario is that you are working on a university management system that can view the attendance and grades of various students.
 
 The task is to create a basic application that can read in the supplied Json file "students.json" and then present the data back to us.
 We want to be able to search for a student and view their information in a clear way. If you have time, also add the ability to then update their information.
