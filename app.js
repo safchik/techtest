@@ -64,6 +64,48 @@ function searchMultipleStudents(studentNames) {
 
 function main() {
     data = loadData();
+
+    rl.question("\nUniversity Management System\n1. Search for a student\n2. Search for multiple students\n3. Exit\nEnter your choice: ", choice => {
+        switch (choice) {
+            case '1':
+                rl.question("Enter student name: ", studentName => {
+                    const student = searchStudent(studentName);
+                    if (student) {
+                        displayStudentInfo(student);
+                        rl.question("Do you want to update this student's information? (yes/no): ", updateChoice => {
+                            if (updateChoice.toLowerCase() === 'yes') {
+                                updateStudentInfo(student);
+                            } else {
+                                rl.close();
+                            }
+                        });
+                    } else {
+                        console.log("Student not found.");
+                        rl.close();
+                    }
+                });
+                break;
+
+            case '2':
+                rl.question("Enter student names (comma-separated): ", studentNamesInput => {
+                    const studentNames = studentNamesInput.split(',');
+                    const students = searchMultipleStudents(studentNames);
+                    students.forEach(student => displayStudentInfo(student));
+                    rl.close();
+                });
+                break;
+
+            case '3':
+                console.log("Exiting...");
+                rl.close();
+                break;
+
+            default:
+                console.log("Invalid choice. Please try again.");
+                rl.close();
+                break;
+        }
+    });
 }
 
 main();
